@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tyre Pyrolysis Plant Records Platform</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Tyre Pyrolysis Records Platform</h1>
+      <p>
+        Centralized maintenance, operations, safety, and environmental compliance
+        tracking for plant workers.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <h2>Submit New Record</h2>
+        <form id="record-form">
+          <label>
+            Record Type
+            <select id="record-type" required>
+              <option value="">Select a category</option>
+              <option value="Maintenance">Maintenance Record</option>
+              <option value="Operational">Operational Data</option>
+              <option value="Safety">Safety Compliance</option>
+              <option value="Environmental">Environmental Compliance</option>
+            </select>
+          </label>
+
+          <label>
+            Date
+            <input id="record-date" type="date" required />
+          </label>
+
+          <label>
+            Shift / Team
+            <input id="record-team" type="text" placeholder="Shift A / Team 1" required />
+          </label>
+
+          <label>
+            Equipment / Area
+            <input id="record-area" type="text" placeholder="Reactor Unit 2" required />
+          </label>
+
+          <label>
+            Details
+            <textarea
+              id="record-details"
+              rows="5"
+              placeholder="Describe work completed, readings, incidents, or inspection notes"
+              required
+            ></textarea>
+          </label>
+
+          <label>
+            Upload Photo (optional)
+            <input id="record-photo" type="file" accept="image/*" />
+          </label>
+
+          <button type="submit">Save Record</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="records-header">
+          <h2>Saved Records</h2>
+          <button id="clear-records" class="danger">Clear All</button>
+        </div>
+
+        <div class="filters">
+          <label>
+            Filter by Type
+            <select id="filter-type">
+              <option value="All">All</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Operational">Operational</option>
+              <option value="Safety">Safety</option>
+              <option value="Environmental">Environmental</option>
+            </select>
+          </label>
+          <label>
+            Search
+            <input id="search" type="text" placeholder="Search by area, team, details..." />
+          </label>
+        </div>
+
+        <ul id="records-list" class="records-list"></ul>
+        <p id="empty-state" class="empty-state">No records yet. Start by submitting one.</p>
+      </section>
+    </main>
+
+    <template id="record-template">
+      <li class="record-card">
+        <div class="record-top">
+          <span class="pill"></span>
+          <small class="date"></small>
+        </div>
+        <h3 class="area"></h3>
+        <p class="team"></p>
+        <p class="details"></p>
+        <img class="photo" alt="Uploaded maintenance evidence" />
+      </li>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
